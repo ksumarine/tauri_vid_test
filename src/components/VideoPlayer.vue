@@ -15,11 +15,13 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
 import { desktopDir } from "@tauri-apps/api/path";
+import { convertFileSrc } from '@tauri-apps/api/tauri';
+
 
 const vid_src = ref("");
 onMounted(async () => {
   const dir = await desktopDir();
-  vid_src.value = `asset://${dir}vid_test.mp4`;
+  vid_src.value = convertFileSrc(`${dir}vid_test.mp4`);
 });
 </script>
 
